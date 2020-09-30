@@ -1,0 +1,7 @@
+.vs/
+bin/
+debug/
+**/*.json
+**/*.props
+**/*.cache
+**/*.nuget.g.targets
