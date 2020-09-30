@@ -1,3 +1,4 @@
+using System;
 
 namespace Obligave
 {
@@ -6,8 +7,14 @@ namespace Obligave
         static void Main(string[] args)
         {
             // Opgave 1
-            ProgramOpgave1.run();
+            Console.WriteLine("## Opgave 1 ##");
+            ProgramOpgave1.Run();
+            Console.WriteLine();
 
+            // Opgave 2
+            Console.WriteLine("## Opgave 2 ##");
+            ProgramOpgave2.Run(10000, 20); // 10k strings of length 20
+            Console.WriteLine();
         }
     }
 }
