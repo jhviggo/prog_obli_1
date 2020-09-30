@@ -1,6 +1,7 @@
 .vs/
 bin/
 debug/
+Debug/
 **/*.json
 **/*.props
 **/*.cache
