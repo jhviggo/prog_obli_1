@@ -5,7 +5,7 @@ namespace Obligave
 {
     class ProgramOpgave1
     {
-        public static void run()
+        public static void Run()
         {
             //Instance of our graph
             MyGraph<string> myGraph = new MyGraph<string>();
