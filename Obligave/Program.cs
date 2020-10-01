@@ -1,4 +1,4 @@
-using Obligave.Opgave3;
+﻿using Obligave.Opgave3;
 using System;
 
 namespace Obligave
@@ -14,7 +14,7 @@ namespace Obligave
 
             // Opgave 2
             Console.WriteLine("## Opgave 2 ##");
-            //ProgramOpgave2.Run(10000, 20); // 10k strings of length 20
+            ProgramOpgave2.Run(10000, 20); // 10k strings of length 20
             Console.WriteLine();
 
 

@@ -12,17 +12,20 @@ namespace Obligave.Opgave3
         {
             try
             {
-                generateUnsavedHenries();
+                GenerateUnsavedHenries();
 
-                // FOR THE LOVE OF GOD DO NOT RUN
-                generateSavedHenries();
+                /**
+                 * FOR THE LOVE OF GOD DO NOT RUN.
+                 * Uncomment the line below and good luck to you.
+                 */
+                // GenerateSavedHenries();
             } catch(Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
         }
 
-        private static void generateUnsavedHenries()
+        private static void GenerateUnsavedHenries()
         {
             Console.WriteLine("Generating Henries...");
             stopwatch.Start();
@@ -36,7 +39,7 @@ namespace Obligave.Opgave3
             Console.WriteLine(ts.Hours + ":" + ts.Minutes + ":" + ts.Seconds + ":" + ts.Milliseconds);
         }
 
-        private static void generateSavedHenries()
+        private static void GenerateSavedHenries()
         {
             List<Henry> henries = new List<Henry>();
             Console.WriteLine("Generating Henries...");
