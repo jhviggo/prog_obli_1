@@ -8,24 +8,23 @@ namespace Obligave.Opgave6
         private static Dictionary<Node<String>, int> distance;
         private static Dictionary<Node<String>, Node<String>> predecessors;
         private static HashSet<Node<String>> unvisitedNodes;
+
+        /// <summary>
+        /// Runs the code contained in the package
+        /// </summary>
         public static void Run()
         {
             Node<String> start, target;
             MyGraph<String> graph = CreateGraph(out start, out target);
-            /**
-            foreach (Node<String> node in graph.NodeSet) {
-                Console.WriteLine(node);
-                foreach(Edge<String> edge in node.MyEdges) {
-                    Console.WriteLine(edge);
-                }
-                Console.WriteLine();
-            }
-            */
             Dijkstra(graph, start);
-
             PrintPath(target);
         }
 
+        /// <summary>
+        /// Runs the Dijkstra algorithm one a given graph on a starting node
+        /// </summary>
+        /// <param name="graph">The graph tree</param>
+        /// <param name="start">The starting node</param>
         private static void Dijkstra(MyGraph<String> graph, Node<String> start)
         {
             // init node lists
@@ -40,8 +39,6 @@ namespace Obligave.Opgave6
             distance.Add(start, 0);
             unvisitedNodes.Add(start);
 
-            Console.WriteLine("Starting with " + start);
-
             while(unvisitedNodes.Count > 0)
             {
                 Node<String> node = GetMinimum(unvisitedNodes);
@@ -51,6 +48,10 @@ namespace Obligave.Opgave6
             }
         }
 
+        /// <summary>
+        /// Finds and updates the minimal distances to all neighbors
+        /// </summary>
+        /// <param name="node">The currently visited node to inspect</param>
         private static void FindMinimalDistance(Node<String> node)
         {
             List<Node<String>> neighbors = GetNeighbors(node);
@@ -58,25 +59,38 @@ namespace Obligave.Opgave6
             {
                 int distanceToNeighbor = GetShortestNode(node) + GetDistanceBetweenNodes(node, neighbor);
 
-                if (GetShortestNode(neighbor) > distanceToNeighbor) {
-                        distance[neighbor] = distanceToNeighbor;
-                        predecessors[neighbor] = node;
-                        unvisitedNodes.Add(neighbor);
-                    }
-            }
+                if (GetShortestNode(neighbor) > distanceToNeighbor)
+                {
+                    distance[neighbor] = distanceToNeighbor;
+                    predecessors[neighbor] = node;
+                    unvisitedNodes.Add(neighbor);
+                }
+        }
         }
 
+        /// <summary>
+        /// Returns the immediate distance between two nodes with no jumps
+        /// </summary>
+        /// <param name="node">The starting node that is being inspected</param>
+        /// <param name="target">The target node</param>
+        /// <returns>Distance between nodes</returns>
         private static int GetDistanceBetweenNodes(Node<String> node, Node<String> target)
         {
             foreach (Edge<String> edges in node.MyEdges)
             {
-                if (edges.To == target) {
+                if (edges.To == target)
+                {
                     return edges.Weight;
                 }
             }
             throw new Exception("damn");
         }
 
+        /// <summary>
+        /// Gets all neighbors from a given node
+        /// </summary>
+        /// <param name="node">The current node</param>
+        /// <returns>All neighbors or the given node</returns>
         private static List<Node<String>> GetNeighbors(Node<String> node)
         {
             List<Node<String>> neighbors = new List<Node<String>>();
@@ -89,12 +103,18 @@ namespace Obligave.Opgave6
             return neighbors;
         }
 
+        /// <summary>
+        /// Returns the node with the smallest weight from a Set of nodes
+        /// </summary>
+        /// <param name="nodes">The Set of nodes</param>
+        /// <returns>Node with the cheapest path</returns>
         private static Node<String> GetMinimum(HashSet<Node<String>> nodes)
         {
             Node<String> minimum = null;
             foreach(Node<String> node in nodes)
             {
-                if(minimum == null) {
+                if(minimum == null)
+                {
                     minimum = node;
                 } else if (GetShortestNode(node) < GetShortestNode(minimum)) {
                     minimum = node;
@@ -103,18 +123,30 @@ namespace Obligave.Opgave6
             return minimum;
         }
 
+        /// <summary>
+        /// Returns the minimum weigth to a given node or infinite
+        /// if no path has been discovered
+        /// </summary>
+        /// <param name="node">The node</param>
+        /// <returns>The nodes smallest path weight</returns>
         private static int GetShortestNode(Node<String> node)
         {
-            if (distance.ContainsKey(node)) {
+            if (distance.ContainsKey(node))
+            {
                 return distance[node];
             } else {
                 return Int32.MaxValue;
             }
         }
 
+        /// <summary>
+        /// Prints the path in the correct order
+        /// </summary>
+        /// <param name="target">The target node to find</param>
         private static void PrintPath(Node<String> target)
         {
-            if (!predecessors.ContainsKey(target)) {
+            if (!predecessors.ContainsKey(target))
+            {
                 return;
             }
 
@@ -130,12 +162,24 @@ namespace Obligave.Opgave6
             }
 
             path.Reverse();
-            foreach(Node<String> node in path)
+
+            for(int i = 0; i < path.Count; i++)
             {
-                Console.Write(node + " -> ");
+                Console.Write(path[i]);
+
+                if (i < path.Count - 1)
+                {
+                    Console.Write(" -> ");
+                }
             }
         }
 
+        /// <summary>
+        /// Creates the graph tree with weighted edges
+        /// </summary>
+        /// <param name="n3">The starting node</param>
+        /// <param name="n7">The target node</param>
+        /// <returns>The finished graph tree</returns>
         private static MyGraph<String> CreateGraph(out Node<String> n3, out Node<String> n7)
         {
             MyGraph<String> myGraph = new MyGraph<String>();
@@ -160,12 +204,12 @@ namespace Obligave.Opgave6
             myGraph.AddEdge("CALIFORNIA", "UTAH", 3);
             myGraph.AddEdge("UTAH", "IDAHO", 3);
             myGraph.AddEdge("UTAH", "NEW MEXICO", 1);
-            myGraph.AddEdge("NEW MEXICO", "KANSAS", 10);
+            myGraph.AddEdge("NEW MEXICO", "KANSAS", 10); // 99
             myGraph.AddEdge("NEW MEXICO", "TEXAS", 4);
             myGraph.AddEdge("TEXAS", "TENNESSEE", 6);
             myGraph.AddEdge("TEXAS", "FLORIDA", 11);
             myGraph.AddEdge("TEXAS", "KANSAS", 2);
-            myGraph.AddEdge("KANSAS", "SOUTH DAKOTA", 4);
+            myGraph.AddEdge("KANSAS", "SOUTH DAKOTA", 4); // 55
             myGraph.AddEdge("SOUTH DAKOTA", "NORTH DAKOTA", 1);
             myGraph.AddEdge("NORTH DAKOTA", "IOWA", 2);
             myGraph.AddEdge("IOWA", "TENNESSEE", 5);

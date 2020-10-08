@@ -13,7 +13,6 @@ namespace Obligave.Opgave6
         /// </summary>
         #region Variables
 
-        private bool visited; //Indicates if the node has been visited
         private T data;
 
         private List<Edge<T>> myEdges = new List<Edge<T>>(); //Holds all the nodes edges
@@ -24,12 +23,6 @@ namespace Obligave.Opgave6
         /// Region that contains peoperties
         /// </summary>
         #region Properties
-
-        public bool Visited
-        {
-            get { return visited; }
-            set { visited = value; }
-        }
 
         public T Data
         {
