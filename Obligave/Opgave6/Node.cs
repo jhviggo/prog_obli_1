@@ -4,20 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Obligave.Opgave1
+namespace Obligave.Opgave6
 {
     class Node<T>
-    {   
+    {
         /// <summary>
         /// Region that contains all variables
         /// </summary>
         #region Variables
 
-        private bool visited; //Indicates if the node has been visited
-
-        private Node<T> parent; //Holds the node's parent
-
-        private T data; //Hold the node's data eg. "Entrance"
+        private T data;
 
         private List<Edge<T>> myEdges = new List<Edge<T>>(); //Holds all the nodes edges
 
@@ -27,18 +23,6 @@ namespace Obligave.Opgave1
         /// Region that contains peoperties
         /// </summary>
         #region Properties
-
-        public bool Visited
-        {
-            get { return visited; }
-            set { visited = value; }
-        }
-
-        public Node<T> Parent
-        {
-            get { return parent; }
-            set { parent = value; }
-        }
 
         public T Data
         {
@@ -67,9 +51,9 @@ namespace Obligave.Opgave1
         /// Adds an edge to the node
         /// </summary>
         /// <param name="Other">The node at the edge's endpoint</param>
-        public void AddEdge(Node<T> Other)
-        { 
-            myEdges.Add(new Edge<T>(this,Other));
+        public void AddEdge(Node<T> Other, int weight)
+        {
+            myEdges.Add(new Edge<T>(this, Other, weight));
         }
 
         /// <summary>

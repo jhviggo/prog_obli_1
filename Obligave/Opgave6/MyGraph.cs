@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Obligave.Opgave1
+namespace Obligave.Opgave6
 {
     class MyGraph<T>
     {   
@@ -33,9 +33,9 @@ namespace Obligave.Opgave1
         /// </summary>
         /// <param name="From">Start node</param>
         /// <param name="To">End node</param>
-        public void AddDirectedEdge(T From, T To)
+        public void AddDirectedEdge(T From, T To, int weight)
         {
-            nodeSet.Find(x => x.Data.Equals(From)).AddEdge(nodeSet.Find(x => x.Data.Equals(To))); 
+            nodeSet.Find(x => x.Data.Equals(From)).AddEdge(nodeSet.Find(x => x.Data.Equals(To)), weight); 
         }
 
         /// <summary>
@@ -43,10 +43,10 @@ namespace Obligave.Opgave1
         /// </summary>
         /// <param name="From">First node</param>
         /// <param name="To">Second node</param>
-        public void AddEdge(T From, T To)
+        public void AddEdge(T From, T To, int weight)
         {
-            nodeSet.Find(x => x.Data.Equals(From)).AddEdge(nodeSet.Find(x => x.Data.Equals(To)));
-            nodeSet.Find(x => x.Data.Equals(To)).AddEdge(nodeSet.Find(x => x.Data.Equals(From)));
+            nodeSet.Find(x => x.Data.Equals(From)).AddEdge(nodeSet.Find(x => x.Data.Equals(To)), weight);
+            nodeSet.Find(x => x.Data.Equals(To)).AddEdge(nodeSet.Find(x => x.Data.Equals(From)), weight);
 
         }
     }

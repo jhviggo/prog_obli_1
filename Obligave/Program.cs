@@ -1,5 +1,7 @@
-﻿using Obligave.Opgave3;
+﻿using Obligave.Opgave1;
+using Obligave.Opgave3;
 using Obligave.Opgave4;
+using Obligave.Opgave6;
 using System;
 
 namespace Obligave
@@ -27,6 +29,11 @@ namespace Obligave
             // Opgave 4
             Console.WriteLine("## Opgave 4 ##");
             ProgramOpgave4.Run();
+            Console.WriteLine();
+
+            // Opgave 6
+            Console.WriteLine("## Opgave 6 ##");
+            ProgramOpgave6.Run();
             Console.WriteLine();
         }
     }

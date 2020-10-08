@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Obligave.Opgave1
+namespace Obligave.Opgave6
 {
     class Edge<T>
-    {   
+    {
         /// <summary>
         /// Region that contains all variables
         /// </summary>
@@ -16,6 +16,8 @@ namespace Obligave.Opgave1
         private Node<T> from; //Starting point of the edge
 
         private Node<T> to; //Endpoint of the edge
+
+        private int weight;
 
         #endregion
 
@@ -36,26 +38,23 @@ namespace Obligave.Opgave1
             set { from = value; }
         }
 
+        public int Weight{
+            get { return weight; }
+            set { weight = value; }
+        }
+
         #endregion
 
-        /// <summary>
-        /// The edge's constructor
-        /// </summary>
-        /// <param name="From">The edge's starting node</param>
-        /// <param name="To">The edge's endnode</param>
-        public Edge(Node<T> From, Node<T> To)
+        public Edge(Node<T> From, Node<T> To, int Weight)
         {
             from = From;
             to = To;
+            weight = Weight;
         }
 
-        /// <summary>
-        /// Converts the edge to at string between to nodes
-        /// </summary>
-        /// <returns>String representation of the edge</returns>
         public override string ToString()
         {
-            return String.Format("{0}->{1}", from.ToString(), to.ToString());
+            return String.Format("{0}-({1})->{2}", from.ToString(), weight, to.ToString());
         }
     }
 }
