@@ -14,10 +14,7 @@ namespace Obligave.opgave6
         #region Variables
 
         private bool visited; //Indicates if the node has been visited
-
-        private Node<T> parent; //Holds the node's parent
-
-        private T data; //Hold the node's data eg. "Entrance"
+        private T data;
 
         private List<Edge<T>> myEdges = new List<Edge<T>>(); //Holds all the nodes edges
 
@@ -32,12 +29,6 @@ namespace Obligave.opgave6
         {
             get { return visited; }
             set { visited = value; }
-        }
-
-        public Node<T> Parent
-        {
-            get { return parent; }
-            set { parent = value; }
         }
 
         public T Data

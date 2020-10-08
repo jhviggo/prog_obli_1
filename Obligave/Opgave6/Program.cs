@@ -8,24 +8,45 @@ namespace Obligave.Opgave6
     {
         public static void Run()
         {
+            Node<String> start, target;
+            MyGraph<String> graph = CreateGraph(out start, out target);
+            Dijkstra(graph, start, target);
+        }
 
-        }
-        private static void Pathbuilder()
+        private static void Dijkstra(MyGraph<String> graph, Node<String> start, Node<String> target)
         {
-            int minimum = int.MaxValue;
-            int min
-        }
-        private static void SearchMaybe()
-        {
+            // init node lists
+            HashSet<Node<String>> visitedNodes = new HashSet<Node<String>>();
+            HashSet<Node<String>> unvisitedNodes = new HashSet<Node<String>>();
 
+            // init distance and predecessor lists
+            Dictionary<Node<String>, int> distance = new Dictionary<Node<string>, int>();
+            Dictionary<Node<String>, Node<String>> predecessors = new Dictionary<Node<string>, Node<string>>();
+
+            // add starting node
+            distance.Add(start, 0);
+            unvisitedNodes.Add(start);
+
+            while(unvisitedNodes.Count > 0)
+            {
+                Node<String> node = GetMinimum(unvisitedNodes);
+            }
         }
-        private static void CreateGraph(ref MyGraph<string> myGraph, out Node<String> n3, out Node<String> n7)
+
+        private static Node<String> GetMinimum(HashSet<Node<String>> nodes)
         {
+            
+        }
+
+        private static MyGraph<String> CreateGraph(out Node<String> n3, out Node<String> n7)
+        {
+            MyGraph<String> myGraph = new MyGraph<String>();
+
             //Adds nodes to our graph
-            Node<String> n1 = myGraph.AddNode("Aarhus");
-            Node<String> n2 = myGraph.AddNode("Viby");
-            n3 = myGraph.AddNode("Risskov");
-            Node<String> n4 = myGraph.AddNode("Tilst");
+            Node<String> n1 = myGraph.AddNode("OREGON");
+            Node<String> n2 = myGraph.AddNode("CALIFORNIA");
+            n3 = myGraph.AddNode("IDAHO");
+            Node<String> n4 = myGraph.AddNode("UTAH");
             Node<String> n5 = myGraph.AddNode("NEW MEXICO");
             Node<String> n6 = myGraph.AddNode("KANSAS");
             n7 = myGraph.AddNode("SOUTH DAKOTA");
@@ -37,10 +58,10 @@ namespace Obligave.Opgave6
             Node<String> n13 = myGraph.AddNode("TEXAS");
  
             //Creates edges between the graphs nodes
-            myGraph.AddEdge("Aarhus", "Viby");
-            myGraph.AddEdge("CALIFORNIA", "Tilst");
-            myGraph.AddEdge("Tilst", "Risskov");
-            myGraph.AddEdge("Tilst", "NEW MEXICO");
+            myGraph.AddEdge("OREGON", "CALIFORNIA");
+            myGraph.AddEdge("CALIFORNIA", "UTAH");
+            myGraph.AddEdge("UTAH", "IDAHO");
+            myGraph.AddEdge("UTAH", "NEW MEXICO");
             myGraph.AddEdge("NEW MEXICO", "KANSAS");
             myGraph.AddEdge("NEW MEXICO", "TEXAS");
             myGraph.AddEdge("TEXAS", "TENNESSEE");
@@ -52,6 +73,8 @@ namespace Obligave.Opgave6
             myGraph.AddEdge("IOWA", "TENNESSEE");
             myGraph.AddEdge("TENNESSEE", "FLORIDA");
             myGraph.AddEdge("TENNESSEE", "NEW YORK");
+
+            return myGraph;
         }
     }
 }

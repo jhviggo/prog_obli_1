@@ -17,6 +17,8 @@ namespace Obligave.Opgave6
 
         private Node<T> to; //Endpoint of the edge
 
+        private int weight;
+
         #endregion
 
         /// <summary>
@@ -36,23 +38,16 @@ namespace Obligave.Opgave6
             set { from = value; }
         }
 
+        public int Weight{ get; set; }
+
         #endregion
 
-        /// <summary>
-        /// The edge's constructor
-        /// </summary>
-        /// <param name="From">The edge's starting node</param>
-        /// <param name="To">The edge's endnode</param>
         public Edge(Node<T> From, Node<T> To)
         {
             from = From;
             to = To;
         }
 
-        /// <summary>
-        /// Converts the edge to at string between to nodes
-        /// </summary>
-        /// <returns>String representation of the edge</returns>
         public override string ToString()
         {
             return String.Format("{0}->{1}", from.ToString(), to.ToString());
