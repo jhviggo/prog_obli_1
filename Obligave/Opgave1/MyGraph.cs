@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Obligave
+namespace Obligave.Opgave1
 {
     class MyGraph<T>
     {   

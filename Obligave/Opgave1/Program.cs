@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
  
-namespace Obligave
+namespace Obligave.Opgave1
 {
     class ProgramOpgave1
     {

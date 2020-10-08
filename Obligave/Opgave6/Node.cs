@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Obligave.opgave6
+namespace Obligave.Opgave6
 {
     class Node<T>
     {
@@ -58,9 +58,9 @@ namespace Obligave.opgave6
         /// Adds an edge to the node
         /// </summary>
         /// <param name="Other">The node at the edge's endpoint</param>
-        public void AddEdge(Node<T> Other)
+        public void AddEdge(Node<T> Other, int weight)
         {
-            myEdges.Add(new Edge<T>(this, Other));
+            myEdges.Add(new Edge<T>(this, Other, weight));
         }
 
         /// <summary>

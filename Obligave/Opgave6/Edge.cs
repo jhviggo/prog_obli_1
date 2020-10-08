@@ -38,19 +38,23 @@ namespace Obligave.Opgave6
             set { from = value; }
         }
 
-        public int Weight{ get; set; }
+        public int Weight{
+            get { return weight; }
+            set { weight = value; }
+        }
 
         #endregion
 
-        public Edge(Node<T> From, Node<T> To)
+        public Edge(Node<T> From, Node<T> To, int Weight)
         {
             from = From;
             to = To;
+            weight = Weight;
         }
 
         public override string ToString()
         {
-            return String.Format("{0}->{1}", from.ToString(), to.ToString());
+            return String.Format("{0}-({1})->{2}", from.ToString(), weight, to.ToString());
         }
     }
 }
